@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import './LoginForm.css'
 
 function LoginFormPage() {
     const dispatch = useDispatch();
@@ -29,25 +30,40 @@ function LoginFormPage() {
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
-            <label>
-                Username or Email
-                <input
-                    type="text"
-                    value={credential}
-                    onChange={(e) => setCredential(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Password
-                <input
-                    type='password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <button type='submit'>Log In</button>
+                <div
+                    className="login-container"
+                >
+                    <label
+                        className="username-or-email"
+                    >
+                        Username or Email
+                        <input
+                            className= 'username-input'
+                            type="text"
+                            value={credential}
+                            onChange={(e) => setCredential(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label
+                        className="password"
+                    >
+                        Password
+                        <input
+                            className='password-input'
+                            type='password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </label>
+                
+                    <div
+                        className='button'
+                    >
+                        <button type='submit'>Log In</button>
+                    </div>
+            </div>
         </form>
     );
 }
