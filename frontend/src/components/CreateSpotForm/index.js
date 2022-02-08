@@ -29,6 +29,7 @@ const CreateSpotForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
+            Post your spot!
             <input
                 type="text"
                 placeholder="City"

@@ -13,7 +13,6 @@ const SpotDetailPage = () => {
         dispatch(getSpots())
     }, [dispatch])
     const spot = useSelector(state => state.spots[spotId])
-    // const spot = spots.find(spot => spot.id === spotId)
 
 
     
