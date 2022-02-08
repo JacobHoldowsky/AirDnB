@@ -1,3 +1,6 @@
+import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
+
 const { useEffect } = require("react");
 const { useDispatch, useSelector } = require("react-redux");
 const { getSpots } = require("../../store/spots");
@@ -24,7 +27,9 @@ const SpotsListPage = () => {
         <div>
             {spots?.map((spot) => {
                 return (
-                <img key={spot.id} src={spot.imgUrl} alt={spot.type}/> 
+                    <Link to={`spots/${spot.id}`}>
+                        <img onClick={Redirect} key={spot.id} src={spot.imgUrl} alt={spot.type}/> 
+                    </Link>
                 )
             })}
         </div>

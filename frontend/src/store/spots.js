@@ -1,7 +1,8 @@
 import { csrfFetch } from "./csrf";
 
-const LOAD = 'spot/LOAD';
-const ADD_ONE = 'spot/ADD_ONE'
+const LOAD = 'spots/LOAD';
+const ADD_ONE = 'spots/ADD_ONE'
+const GET_ONE = 'spots/GET_ONE'
 
 const load = (list) => ({
     type: LOAD,
@@ -13,10 +14,15 @@ const addOneSpot = (spot) => ({
     spot
 });
 
+const getOneSpot = (spot) => ({
+    type: GET_ONE,
+    spot
+})
+
 export const getSpots = () => async dispatch => {
     console.log('hello')
     const response = await fetch(`/api/spots`);
-    
+
     if (response.ok) {
         const spots = await response.json();
         dispatch(load(spots));
@@ -26,7 +32,7 @@ export const getSpots = () => async dispatch => {
 export const createSpot = (payload) => async dispatch => {
     const response = await csrfFetch(`/api/spots`, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
     if (response.ok) {
@@ -36,7 +42,16 @@ export const createSpot = (payload) => async dispatch => {
     }
 }
 
-const initialState = {list:[]};
+export const getSpotDetails = (id) => async dispatch => {
+    const response = await fetch(`/api/spots/${id}`)
+
+    if (response.ok) {
+        const spot = await response.json();
+        dispatch(getOneSpot(spot))
+    }
+}
+
+const initialState = { list: [] };
 
 const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -45,14 +60,23 @@ const spotsReducer = (state = initialState, action) => {
                 ...state,
                 list: action.list
             }
-        default:
-            return state;
         case ADD_ONE:
             return {
                 ...state,
                 list: [...state.list, action.spot]
             }
+        case GET_ONE:
+                const index = state.list.indexOf(action.spot)
+                const newList = state.list
+                newList.splice(index, 1)
+            return {
+                ...state,
+                list: [newList]
+            }
+        default:
+            return state;
     }
+
 }
 
 export default spotsReducer;
