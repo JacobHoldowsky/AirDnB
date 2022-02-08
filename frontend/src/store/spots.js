@@ -4,6 +4,8 @@ import { csrfFetch } from "./csrf";
 const LOAD = 'spots/LOAD';
 const ADD_ONE = 'spots/ADD_ONE'
 const GET_ONE = 'spots/GET_ONE'
+const REMOVE_ONE = 'spots/REMOVE_ONE'
+const UPDATE_ONE = 'spots/UPDATE_ONE'
 
 const load = (list) => ({
     type: LOAD,
@@ -20,6 +22,16 @@ const getOneSpot = (spot) => ({
     spot
 })
 
+const removeOneSpot = (spotId) => ({
+    type: REMOVE_ONE,
+    spotId
+})
+
+const updateOneSpot = (spot) => ({
+    type: UPDATE_ONE,
+    spot
+})
+
 export const getSpots = () => async dispatch => {
     const response = await fetch(`/api/spots`);
 
@@ -28,6 +40,30 @@ export const getSpots = () => async dispatch => {
         dispatch(load(spots));
     }
 };
+
+export const deleteOneSpot = (spotId) => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+    })
+
+    if (response.ok) {
+        dispatch(removeOneSpot(spotId))
+    }
+}
+
+export const editOneSpot = (spotId, payload) => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(spotId)
+    })
+    if (response.ok) {
+        const updatedSpot = await response.json();
+        dispatch(updateOneSpot(payload));
+        return updatedSpot
+    }
+}
 
 export const createSpot = (payload) => async dispatch => {
     const response = await csrfFetch(`/api/spots`, {
@@ -44,7 +80,7 @@ export const createSpot = (payload) => async dispatch => {
 
 export const getSpotDetails = (id) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${id}`)
-    console.log('hi',response)
+    console.log('hi', response)
     if (response.ok) {
         const spot = await response.json();
         dispatch(getOneSpot(spot))
@@ -70,12 +106,18 @@ const spotsReducer = (state = initialState, action) => {
                 list: [...state.list, action.spot]
             }
         case GET_ONE:
-                // const index = state.list.indexOf(action.spot)
-                // const newList = state.list
-                // newList.splice(index, 1)
             return {
                 ...state,
             }
+        case REMOVE_ONE:
+            const newState = { ...state }
+            delete newState[action.spotId];
+            return newState
+        case UPDATE_ONE: {
+            const newState = { ...state }
+            newState[action.spot.id] = action.spot
+            return newState
+        }
         default:
             return state;
     }

@@ -9,3 +9,17 @@ form {
     margin-bottom: 25px;
     border-radius: 10px;
 }
+
+.edit-and-delete{
+    display: flex;
+    flex-direction: row;
+    gap: 125px;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+}
