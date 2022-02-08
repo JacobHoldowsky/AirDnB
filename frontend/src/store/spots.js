@@ -26,7 +26,7 @@ export const getSpots = () => async dispatch => {
 export const createSpot = (payload) => async dispatch => {
     const response = await csrfFetch(`/api/spots`, {
         method: 'POST',
-        headers: {'content-type': 'application/json'},
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(payload)
     })
     if (response.ok) {
@@ -36,7 +36,7 @@ export const createSpot = (payload) => async dispatch => {
     }
 }
 
-const initialState = {};
+const initialState = {list:[]};
 
 const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -50,7 +50,7 @@ const spotsReducer = (state = initialState, action) => {
         case ADD_ONE:
             return {
                 ...state,
-                spot: action.spot
+                list: [...state.list, action.spot]
             }
     }
 }

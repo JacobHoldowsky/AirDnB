@@ -19,6 +19,7 @@ router.get('/:id(\\d+)', async (req, res) => {
 
 router.post('/' ,asyncHandler(async function(req, res) {
     const {city, state, country, price, imgUrl} = req.body
+    console.log(city)
     const spot = await Spot.create({
         city,
         state,
@@ -26,6 +27,8 @@ router.post('/' ,asyncHandler(async function(req, res) {
         price,
         imgUrl
     })
+
+    console.log(spot)
 
     return res.json(spot)
 }))
