@@ -6,6 +6,8 @@ const router = express.Router();
 const { Spot } = require('../../db/models');
 
 router.get('/', asyncHandler(async function (_req, res) {
-    const spot = await Spot.findAll();
-    return res.json(spot);
+    const spots = await Spot.findAll();
+    return res.json(spots);
 }));
+
+module.exports = router
