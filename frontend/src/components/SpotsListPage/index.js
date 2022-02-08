@@ -11,7 +11,6 @@ const SpotsListPage = () => {
     const dispatch = useDispatch();
 
     const spots = useSelector(state => state.spots.list)
-    console.log(spots)
 
     // const spots = useSelector(state => {
     //     return state.spot.list.map(spotId => state.spot[spotId])

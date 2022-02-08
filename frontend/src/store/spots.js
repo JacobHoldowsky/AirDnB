@@ -1,3 +1,4 @@
+import { bindActionCreators } from "redux";
 import { csrfFetch } from "./csrf";
 
 const LOAD = 'spots/LOAD';
@@ -20,7 +21,6 @@ const getOneSpot = (spot) => ({
 })
 
 export const getSpots = () => async dispatch => {
-    console.log('hello')
     const response = await fetch(`/api/spots`);
 
     if (response.ok) {
@@ -43,8 +43,8 @@ export const createSpot = (payload) => async dispatch => {
 }
 
 export const getSpotDetails = (id) => async dispatch => {
-    const response = await fetch(`/api/spots/${id}`)
-
+    const response = await csrfFetch(`/api/spots/${id}`)
+    console.log('hi',response)
     if (response.ok) {
         const spot = await response.json();
         dispatch(getOneSpot(spot))
@@ -56,22 +56,25 @@ const initialState = { list: [] };
 const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
+            const spots = {}
+            action.list.forEach(spot => spots[spot.id] = spot)
             return {
                 ...state,
+                ...spots,
                 list: action.list
             }
         case ADD_ONE:
             return {
                 ...state,
+                [action.spot.id]: action.spot,
                 list: [...state.list, action.spot]
             }
         case GET_ONE:
-                const index = state.list.indexOf(action.spot)
-                const newList = state.list
-                newList.splice(index, 1)
+                // const index = state.list.indexOf(action.spot)
+                // const newList = state.list
+                // newList.splice(index, 1)
             return {
                 ...state,
-                list: [newList]
             }
         default:
             return state;

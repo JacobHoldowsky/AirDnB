@@ -23,8 +23,6 @@ const CreateSpotForm = () => {
             price,
             imgUrl
         }
-
-        console.log(payload)
         
         const newSpot = await dispatch(createSpot(payload))
     }
