@@ -37,7 +37,7 @@ router.put('/:id', asyncHandler(async(req, res) => {
     const spot = await Spot.findByPk(req.params.id);
     spot.set({city, state, country, price, imgUrl})
     await spot.save()
-    return spot.id
+    return res.json(spot)
 }))
 
 router.post('/' ,asyncHandler(async function(req, res) {

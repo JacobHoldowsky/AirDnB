@@ -1,4 +1,4 @@
-import { bindActionCreators } from "redux";
+
 import { csrfFetch } from "./csrf";
 
 const LOAD = 'spots/LOAD';
@@ -60,6 +60,7 @@ export const editOneSpot = (spotId, payload) => async dispatch => {
     })
     if (response.ok) {
         const updatedSpot = await response.json();
+        console.log(updatedSpot)
         dispatch(updateOneSpot(updatedSpot));
         return updatedSpot
     }

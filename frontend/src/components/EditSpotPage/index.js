@@ -1,7 +1,7 @@
 
 
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useHistory, useParams } from 'react-router-dom'
 import { editOneSpot } from '../../store/spots'
 import './EditSpot.css'
@@ -30,8 +30,8 @@ const EditSpotPage = () => {
             imgUrl
         }
 
-        const newSpot = await dispatch(editOneSpot(spotId, payload))
-        history.push(`/spots/${newSpot.id}`)
+        await dispatch(editOneSpot(spotId, payload))
+        history.push(`/spots/${spotId}`)
     }
 
     return (
