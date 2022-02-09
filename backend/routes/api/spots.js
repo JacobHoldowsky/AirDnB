@@ -1,6 +1,7 @@
 const { response } = require('express');
 const express = require('express');
 const asyncHandler = require('express-async-handler');
+const { restoreUser } = require('../../utils/auth');
 
 const router = express.Router();
 
@@ -40,8 +41,9 @@ router.put('/:id', asyncHandler(async (req, res) => {
     return res.json(spot)
 }))
 
-router.post('/', asyncHandler(async function (req, res) {
-    const { city, state, country, price, imgUrl } = req.body
+router.post('/', restoreUser, asyncHandler(async function (req, res) {
+    const { city, state, country, price, imgUrl, user } = req.body
+    const userId = user.id
     const spot = await Spot.create({
         city,
         state,

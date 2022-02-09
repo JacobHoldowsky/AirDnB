@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { createSpot } from "../../store/spots"
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import './CreateSpotForm.css'
 
 
 const CreateSpotForm = () => {
     const dispatch = useDispatch()
     const history = useHistory()
+    const sessionUserId = useSelector(state => state.session.user.id)
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [country, setCountry] = useState('')
@@ -16,18 +17,18 @@ const CreateSpotForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const payload = {
             city,
             state,
             country,
             price,
-            imgUrl
+            imgUrl,
+            sessionUserId
         }
-        
+
         const newSpot = await dispatch(createSpot(payload))
         history.push(`/spots/${newSpot.id}`)
-        
+
     }
 
     return (
@@ -79,7 +80,7 @@ const CreateSpotForm = () => {
         </form>
     )
 
-    
+
 
 }
 
