@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { createSpot } from "../../store/spots"
+import {useHistory} from 'react-router-dom'
 import './CreateSpotForm.css'
 
 
 const CreateSpotForm = () => {
     const dispatch = useDispatch()
-
+    const history = useHistory()
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [country, setCountry] = useState('')
@@ -25,6 +26,8 @@ const CreateSpotForm = () => {
         }
         
         const newSpot = await dispatch(createSpot(payload))
+        history.push(`/spots/${newSpot.id}`)
+        
     }
 
     return (

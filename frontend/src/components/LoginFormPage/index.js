@@ -37,7 +37,7 @@ function LoginFormPage() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={'login-form'}>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
@@ -57,7 +57,7 @@ function LoginFormPage() {
                     />
                 </label>
                 <label
-                    className="password"
+                    className="login-password"
                 >
                     Password
                     <input
@@ -70,7 +70,7 @@ function LoginFormPage() {
                 </label>
 
                 <div
-                    className='button'
+                    className='login-button'
                 >
                     <button type='submit'>Log In</button>
                 </div>

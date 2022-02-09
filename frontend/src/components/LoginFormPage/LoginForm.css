@@ -13,7 +13,7 @@
     box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 1px 1px
 }
 
-form{
+.login-form{
     display: flex;
     justify-content: center;
     margin-top: 50px;
@@ -25,13 +25,13 @@ form{
     align-items: center;
 }
 
-.password {
+.login-password {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.button {
+.login-button {
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,4 +1,4 @@
-li {
+.nav-bar-links {
     display: flex;
     gap: 50px
 }

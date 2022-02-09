@@ -56,11 +56,11 @@ export const editOneSpot = (spotId, payload) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${spotId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(spotId)
+        body: JSON.stringify(payload)
     })
     if (response.ok) {
         const updatedSpot = await response.json();
-        dispatch(updateOneSpot(payload));
+        dispatch(updateOneSpot(updatedSpot));
         return updatedSpot
     }
 }
@@ -73,6 +73,7 @@ export const createSpot = (payload) => async dispatch => {
     })
     if (response.ok) {
         const newSpot = await response.json();
+        console.log(newSpot)
         dispatch(addOneSpot(newSpot));
         return newSpot
     }
@@ -90,6 +91,7 @@ export const getSpotDetails = (id) => async dispatch => {
 const initialState = { list: [] };
 
 const spotsReducer = (state = initialState, action) => {
+    let newState
     switch (action.type) {
         case LOAD:
             const spots = {}
@@ -110,14 +112,13 @@ const spotsReducer = (state = initialState, action) => {
                 ...state,
             }
         case REMOVE_ONE:
-            const newState = { ...state }
+            newState = { ...state }
             delete newState[action.spotId];
             return newState
-        case UPDATE_ONE: {
-            const newState = { ...state }
+        case UPDATE_ONE:
+            newState = { ...state }
             newState[action.spot.id] = action.spot
             return newState
-        }
         default:
             return state;
     }

@@ -1,0 +1,28 @@
+.detail-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-edit-and-delete {
+    display: flex;
+    justify-content: center;
+    gap: 250px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.spot-info {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin-top: 20px;
+    padding: 0;
+    font-size: x-large;
+    font-weight: 500;
+}
+
+.detail-img {
+    width: 650px;
+}
