@@ -4,23 +4,23 @@ const asyncHandler = require('express-async-handler');
 
 const router = express.Router();
 
-const { Spot, Booking, Review } = require('../../db/models');
+const { User, Spot, Booking, Review } = require('../../db/models');
 
 router.get('/', asyncHandler(async function (_req, res) {
     const spots = await Spot.findAll();
-    return res.json(spots);
+    const users = await User.findAll();
+    return res.json({spots, users});
 }));
 
 router.get('/:id(\\d+)', async (req, res) => {
     const spotId = req.params.id;
     const spot = await Spot.findByPk(spotId);
-    return res.json(spotId)
-
+    return res.json(spot)
 })
 
-router.delete('/:id', asyncHandler(async(req, res) => {
+router.delete('/:id', asyncHandler(async (req, res) => {
     const spot = await Spot.findByPk(req.params.id)
-    const bookings = await Booking.findAll({where: {spotId: [spot.id]}})
+    const bookings = await Booking.findAll({ where: { spotId: [spot.id] } })
     const reviews = await Review.findAll({ where: { spotId: [spot.id] } })
     bookings.forEach(async (booking) => {
         await booking.destroy()
@@ -29,25 +29,26 @@ router.delete('/:id', asyncHandler(async(req, res) => {
         await review.destroy()
     })
     await spot.destroy();
-    return res.json({message: 'success'})
+    return res.json({ message: 'success' })
 }))
 
-router.put('/:id', asyncHandler(async(req, res) => {
+router.put('/:id', asyncHandler(async (req, res) => {
     const { city, state, country, price, imgUrl } = req.body
     const spot = await Spot.findByPk(req.params.id);
-    spot.set({city, state, country, price, imgUrl})
+    spot.set({ city, state, country, price, imgUrl })
     await spot.save()
     return res.json(spot)
 }))
 
-router.post('/' ,asyncHandler(async function(req, res) {
-    const {city, state, country, price, imgUrl} = req.body
+router.post('/', asyncHandler(async function (req, res) {
+    const { city, state, country, price, imgUrl } = req.body
     const spot = await Spot.create({
         city,
         state,
         country,
         price,
-        imgUrl
+        imgUrl,
+        userId
     })
 
 

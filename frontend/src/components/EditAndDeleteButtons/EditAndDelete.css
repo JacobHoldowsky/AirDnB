@@ -1,0 +1,7 @@
+.detail-edit-and-delete {
+    display: flex;
+    justify-content: center;
+    gap: 250px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}

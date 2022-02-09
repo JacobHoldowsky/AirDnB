@@ -26,9 +26,27 @@ const SpotsListPage = () => {
         <div className={'spots-list-imgs'}>
             {spots?.map((spot) => {
                 return (
-                    <Link key={spot.id} to={`spots/${spot.id}`}>
-                        <img className={'spots-list-img'} onClick={Redirect} src={spot.imgUrl} alt={spot.type} />
-                    </Link>
+                    <div>
+                        <Link key={spot.id} to={`spots/${spot.id}`}>
+                            <img className={'spots-list-img'} onClick={Redirect} src={spot.imgUrl} alt={spot.type} />
+                        </Link>
+                        <ul className={'spots-list-spot-details'}>
+                            <li>
+                                {spot.city}
+                            </li>
+                            <li>
+                                {spot.state}
+                            </li>
+                            <li>
+                                {spot.country}
+                            </li>
+                            <li>
+                                {`$${spot.price}`}
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    
                 )
             })}
         </div>

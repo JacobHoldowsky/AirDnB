@@ -1,14 +1,20 @@
 
 import { csrfFetch } from "./csrf";
 
-const LOAD = 'spots/LOAD';
+const LOAD_ONE_USER = 'spots/LOAD_ONE_USER'
+const LOAD_ONE_SPOT = 'spots/LOAD_ONE_SPOT';
 const ADD_ONE = 'spots/ADD_ONE'
 const GET_ONE = 'spots/GET_ONE'
 const REMOVE_ONE = 'spots/REMOVE_ONE'
 const UPDATE_ONE = 'spots/UPDATE_ONE'
 
-const load = (list) => ({
-    type: LOAD,
+const loadOneUser = (userList) => ({
+    type: LOAD_ONE_USER,
+    userList
+})
+
+const loadOneSpot = (list) => ({
+    type: LOAD_ONE_SPOT,
     list
 });
 
@@ -34,10 +40,11 @@ const updateOneSpot = (spot) => ({
 
 export const getSpots = () => async dispatch => {
     const response = await fetch(`/api/spots`);
-
     if (response.ok) {
-        const spots = await response.json();
-        dispatch(load(spots));
+        const spotsAndUsers = await response.json();
+        console.log(spotsAndUsers)
+        dispatch(loadOneSpot(spotsAndUsers.spots));
+        dispatch(loadOneUser(spotsAndUsers.users))
     }
 };
 
@@ -83,8 +90,9 @@ export const getSpotDetails = (id) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${id}`)
     console.log('hi', response)
     if (response.ok) {
-        const spot = await response.json();
-        dispatch(getOneSpot(spot))
+        const spotAndUser = await response.json();
+        console.log('hi',spotAndUser)
+        dispatch(getOneSpot(spotAndUser.spot))
     }
 }
 
@@ -93,7 +101,14 @@ const initialState = { list: [] };
 const spotsReducer = (state = initialState, action) => {
     let newState
     switch (action.type) {
-        case LOAD:
+        case LOAD_ONE_USER:
+            const users = {}
+            action.userList.forEach(user => users[user.id] = user)
+            return {
+                ...state,
+                userList: action.userList
+            }
+        case LOAD_ONE_SPOT:
             const spots = {}
             action.list.forEach(spot => spots[spot.id] = spot)
             return {

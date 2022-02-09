@@ -21,11 +21,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {});
   Spot.associate = function (models) {
     // associations can be defined here
     Spot.hasMany(models.Booking, { foreignKey: 'spotId' })
     Spot.hasMany(models.Review, { foreignKey: 'spotId' })
+    Spot.belongsTo(models.User, { foreignKey: 'userId' })
   };
   return Spot;
 };

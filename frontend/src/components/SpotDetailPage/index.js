@@ -3,6 +3,7 @@ import { useDispatch, useSelector, useStore } from "react-redux";
 import { useHistory, useParams } from "react-router"
 import { NavLink } from "react-router-dom";
 import { deleteOneSpot, getSpotDetails, getSpots } from "../../store/spots";
+import EditAndDelete from "../EditAndDeleteButtons";
 import EditSpotPage from "../EditSpotPage";
 import './SpotDetail.css'
 
@@ -11,6 +12,14 @@ const SpotDetailPage = () => {
     const { spotId } = useParams();
     const history = useHistory()
     const spot = useSelector(state => state.spots[spotId])
+    const users = useSelector(state => state.spots.userList)
+    const sessionUserId = useSelector(state => state.session.user.id)
+    console.log('seession', sessionUserId)
+    let user;
+    if (users) {
+        user = users.find(user => user.id === spot.userId)
+    }
+    
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -22,16 +31,9 @@ const SpotDetailPage = () => {
     return (
         <div className={'detail-container'}>
             <img className={'detail-img'} src={spot?.imgUrl} alt={spot?.imgUrl} />
-            <div className={'detail-edit-and-delete'}>
-                <NavLink to={`/spots/${spotId}/edit`}>Edit</NavLink>
-
-                <button
-                    onClick={async () => {
-                        await dispatch(deleteOneSpot(spotId))
-                        history.push('/spots')
-                    }}
-                >Delete</button>
-            </div>
+            {sessionUserId === user?.id && 
+                <EditAndDelete spot={spot}/>
+            }
             <ul className={'spot-info'}>
                 <li>
                     {`${spot?.city},`}
@@ -45,7 +47,12 @@ const SpotDetailPage = () => {
                 <li>
                     {`$${spot?.price} per night`}
                 </li>
-
+                <li>
+                    {spot?.country}
+                </li>
+                <li>
+                    {`Posted by ${user?.username}`}
+                </li>
             </ul>
         </div>
     )

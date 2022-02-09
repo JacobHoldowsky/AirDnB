@@ -8,3 +8,10 @@
     width: 500px;
     margin: 10px;
 }
+
+.spots-list-spot-details {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin-bottom: 55px;
+}
