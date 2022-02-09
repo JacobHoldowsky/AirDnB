@@ -28,7 +28,7 @@ const CreateSpotForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={'create-spot-form'}>
             Post your spot!
             <input
                 type="text"
