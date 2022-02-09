@@ -26,8 +26,8 @@ const SpotDetailPage = () => {
                 <NavLink to={`/spots/${spotId}/edit`}>Edit</NavLink>
 
                 <button
-                    onClick={() => {
-                        dispatch(deleteOneSpot(spotId))
+                    onClick={async () => {
+                        await dispatch(deleteOneSpot(spotId))
                         history.push('/spots')
                     }}
                 >Delete</button>
