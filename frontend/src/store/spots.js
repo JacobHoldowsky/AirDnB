@@ -73,7 +73,6 @@ export const createSpot = (payload) => async dispatch => {
     })
     if (response.ok) {
         const newSpot = await response.json();
-        console.log(newSpot)
         dispatch(addOneSpot(newSpot));
         return newSpot
     }

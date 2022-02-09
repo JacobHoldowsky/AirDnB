@@ -10,15 +10,14 @@ import './SpotDetail.css'
 const SpotDetailPage = () => {
     const { spotId } = useParams();
     const history = useHistory()
-    const [editPost, setEditPost] = useState(false)
+    const spot = useSelector(state => state.spots[spotId])
 
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getSpots())
-        // dispatch(deleteOneSpot(spotId))
+
     }, [dispatch])
 
-    const spot = useSelector(state => state.spots[spotId])
 
     return (
         <div className={'detail-container'}>

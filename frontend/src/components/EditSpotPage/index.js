@@ -1,7 +1,7 @@
 
 
 import { useDispatch, useSelector } from "react-redux"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom'
 import { editOneSpot } from '../../store/spots'
 import './EditSpot.css'
@@ -19,9 +19,7 @@ const EditSpotPage = () => {
     const [price, setPrice] = useState(spot.price)
     const [imgUrl, setImgUrl] = useState(spot.imgUrl)
 
-
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const payload = {
@@ -32,8 +30,8 @@ const EditSpotPage = () => {
             imgUrl
         }
 
-        dispatch(editOneSpot(spotId, payload))
-        history.push(`/spots/${spot.id}`)
+        const newSpot = await dispatch(editOneSpot(spotId, payload))
+        history.push(`/spots/${newSpot.id}`)
     }
 
     return (
