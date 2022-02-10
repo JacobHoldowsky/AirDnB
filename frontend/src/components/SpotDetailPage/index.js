@@ -15,7 +15,7 @@ const SpotDetailPage = () => {
     console.log('spotId', spotId)
     console.log('allReviews', allReviews)
     const [postReview, setPostReview] = useState(false)
-
+    
     const sessionUserId = useSelector(state => {
         if (state.session.user) return state.session.user.id
         else return null
@@ -31,6 +31,9 @@ const SpotDetailPage = () => {
         spotReviews = allReviews.filter(review => review?.spotId === spot.id)
         console.log('spotReviews', spotReviews)
     }
+
+    const authorizedReviewer = sessionUserId !== spot?.userid
+
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -68,13 +71,13 @@ const SpotDetailPage = () => {
             <div className={'reviews-header'}>
                 Reviews
             </div>
-            {sessionUserId &&
+            {sessionUserId && sessionUserId !== user?.id &&
                 <button
                     onClick={() => setPostReview(!postReview)}
                 >
                     Add a review
                 </button>}
-            {postReview &&
+            {postReview && sessionUserId !== user?.id &&
                 <PostAReview spot={spot} setPostReview={setPostReview} />}
             {spotReviews &&
                 <ul className={'reviews-container'}>
