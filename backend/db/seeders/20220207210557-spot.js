@@ -31,7 +31,7 @@ module.exports = {
         country: 'USA',
         price: '256',
         imgUrl: 'https://ssl.cdn-redfin.com/photo/106/bigphoto/011/RX-10608011_B.jpg',
-        userId: 1
+        userId: 2
       },
     ], {});
   },

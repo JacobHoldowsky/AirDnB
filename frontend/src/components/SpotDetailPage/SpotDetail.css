@@ -21,31 +21,37 @@
 }
 
 .reviews-header {
+    display: flex;
+    justify-content: flex-start;
     margin-top: 35px;
     color: black;
     border-bottom: black solid 2px;
+    font-size: x-large;
+    margin-bottom: 20px;
 }
 
 .reviews-container {
+    display: flex;
+    justify-content: flex-start;
     list-style-type: none;
-    border: black solid 2px;
     border-radius: 5px;
-    padding: 15px
+    /* padding: 20px; */
+    gap: 20px
 }
 
 .review-container {
     display: flex;
-    align-items: flex-end;
-    height: 20px;
-    gap: 5px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
 }
 
 .review-user {
     color: dodgerblue;
-    font-size: 20px;
+    font-size: larger;
 }
 
 .review-content {
     font-style: italic;
-    font-size: 18px;
+    font-size: larger;
 }
