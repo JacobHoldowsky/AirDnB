@@ -1,3 +1,9 @@
+.create-spot-form-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
 .create-spot-form {
     display: flex;
     flex-direction: column;

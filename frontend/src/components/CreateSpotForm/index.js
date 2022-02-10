@@ -35,52 +35,55 @@ const CreateSpotForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className={'create-spot-form'}>
-            Post your spot!
-            <input
-                type="text"
-                placeholder="City"
-                required
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-            >
-            </input>
-            <input
-                type="text"
-                placeholder="State"
-                required
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-            >
-            </input>
-            <input
-                type="text"
-                placeholder="Country"
-                required
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-            >
-            </input>
-            <input
-                type="text"
-                placeholder="Price Per Night"
-                required
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-            >
-            </input>
-            <input
-                type="text"
-                placeholder="Image URL"
-                required
-                value={imgUrl}
-                onChange={(e) => setImgUrl(e.target.value)}
-            >
-            </input>
-            <button>
-                Submit
-            </button>
-        </form>
+        <div className={'create-spot-form-container'}>
+            <form onSubmit={handleSubmit} className={'create-spot-form'}>
+                Post your spot!
+                <input
+                    type="text"
+                    placeholder="City"
+                    required
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                >
+                </input>
+                <input
+                    type="text"
+                    placeholder="State"
+                    required
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                >
+                </input>
+                <input
+                    type="text"
+                    placeholder="Country"
+                    required
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                >
+                </input>
+                <input
+                    type="text"
+                    placeholder="Price Per Night"
+                    required
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                >
+                </input>
+                <input
+                    type="text"
+                    placeholder="Image URL"
+                    required
+                    value={imgUrl}
+                    onChange={(e) => setImgUrl(e.target.value)}
+                >
+                </input>
+                <button>
+                    Submit
+                </button>
+            </form>
+        </div>
+        
     )
 
 
