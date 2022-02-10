@@ -32,10 +32,10 @@ const SpotsListPage = () => {
                         </Link>
                         <ul className={'spots-list-spot-details'}>
                             <li>
-                                {spot.city}
+                                {`${spot.city},`}
                             </li>
                             <li>
-                                {spot.state}
+                                {`${spot.state},`}
                             </li>
                             <li>
                                 {spot.country}

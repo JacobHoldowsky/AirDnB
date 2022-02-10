@@ -23,11 +23,12 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul>
+    <ul className='profile-details'>
       <li className={'nav-bar-links'}>
         <NavLink exact to="/">Home</NavLink>
         <NavLink to="/spots">Check out the newest spots!</NavLink>
-        <NavLink to='/spots/new'>Post a new Spot</NavLink>
+        {sessionUser && 
+        <NavLink to='/spots/new'>Post a new Spot</NavLink>}
         {isLoaded && sessionLinks}
       </li>
     </ul>

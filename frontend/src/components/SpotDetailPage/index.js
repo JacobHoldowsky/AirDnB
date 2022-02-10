@@ -11,10 +11,14 @@ const SpotDetailPage = () => {
     const spot = useSelector(state => state.spots[spotId])
     console.log('spot',spot)
     const users = useSelector(state => state.spots.userList)
-    const sessionUserId = useSelector(state => state.session.user.id)
+    const sessionUserId = useSelector(state => {
+        if (state.session.user) return state.session.user.id
+        else return null
+    })
+    console.log('session', sessionUserId)
     let user;
     if (users) {
-        user = users.find(user => user.id === spot?.userId)
+        user = users.find(user => user?.id === spot?.userId)
     }
     
 
@@ -28,7 +32,7 @@ const SpotDetailPage = () => {
     return (
         <div className={'detail-container'}>
             <img className={'detail-img'} src={spot?.imgUrl} alt={spot?.imgUrl} />
-            {sessionUserId === user?.id && 
+            {sessionUserId && sessionUserId === user?.id && 
                 <EditAndDelete spot={spot}/>
             }
             <ul className={'spot-info'}>
@@ -47,9 +51,9 @@ const SpotDetailPage = () => {
                 <li>
                     {spot?.country}
                 </li>
-                <li>
+                {user && <li>
                     {`Posted by ${user?.username}`}
-                </li>
+                </li>}
             </ul>
         </div>
     )

@@ -1,6 +1,7 @@
 .nav-bar-links {
     display: flex;
-    gap: 50px
+    gap: 50px;
+    list-style-type: none;
 }
 
 .profile-dropdown {
@@ -11,7 +12,8 @@
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    gap: 10px
+    gap: 10px;
+    list-style-type: none;
 }
 
 .profile-dropdown:hover {
@@ -25,4 +27,9 @@
 
 .fas::selection {
     visibility: hidden;
+}
+
+.profile-details {
+    list-style-type: none;
+    background-color:;
 }
