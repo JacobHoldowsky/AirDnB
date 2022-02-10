@@ -27,7 +27,10 @@ const CreateSpotForm = () => {
         }
 
         const newSpot = await dispatch(createSpot(payload))
-        history.push(`/spots/${newSpot.id}`)
+        if (newSpot) {
+            history.push(`/spots/${newSpot.id}`)
+        }
+        
 
     }
 

@@ -10,7 +10,7 @@ const { User, Spot, Booking, Review } = require('../../db/models');
 router.get('/', asyncHandler(async function (_req, res) {
     const spots = await Spot.findAll();
     const users = await User.findAll();
-    return res.json({spots, users});
+    return res.json({ spots, users });
 }));
 
 router.get('/:id(\\d+)', async (req, res) => {
@@ -42,8 +42,8 @@ router.put('/:id', asyncHandler(async (req, res) => {
 }))
 
 router.post('/', restoreUser, asyncHandler(async function (req, res) {
-    const { city, state, country, price, imgUrl, user } = req.body
-    const userId = user.id
+    const { city, state, country, price, imgUrl } = req.body
+    const userId = req.user.id
     const spot = await Spot.create({
         city,
         state,
