@@ -78,8 +78,7 @@ const SpotDetailPage = () => {
                 <PostAReview />}
             {spotReviews &&
                 <ul className={'reviews-container'}>
-
-                    {spotReviews.map(review => (
+                    {spotReviews && spotReviews.map(review => (
                         <li className={'review-container'}>
                             <div className={'review-user'}>
                                 {`${users.find(user => user.id === review.userId).username}:`}
