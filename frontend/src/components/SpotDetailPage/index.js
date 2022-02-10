@@ -9,18 +9,26 @@ import './SpotDetail.css'
 const SpotDetailPage = () => {
     const { spotId } = useParams();
     const spot = useSelector(state => state.spots[spotId])
-    console.log('spot',spot)
     const users = useSelector(state => state.spots.userList)
+    const allReviews = useSelector(state => state.spots.reviewList)
+    console.log('spotId', spotId)
+    console.log('allReviews', allReviews)
+
     const sessionUserId = useSelector(state => {
         if (state.session.user) return state.session.user.id
         else return null
     })
-    console.log('session', sessionUserId)
+
     let user;
     if (users) {
         user = users.find(user => user?.id === spot?.userId)
     }
-    
+
+    let spotReviews;
+    if (allReviews) {
+        spotReviews = allReviews.filter(review => review?.spotId === spot.id)
+        console.log('spotReviews',spotReviews)
+    }
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -54,6 +62,24 @@ const SpotDetailPage = () => {
                 {user && <li>
                     {`Posted by ${user?.username}`}
                 </li>}
+                <div className={'reviews-header'}>
+                    Reviews
+                </div>
+                {
+                spotReviews &&
+                <ul className={'reviews-container'}>
+                    {spotReviews.map(review => (
+                        <li className={'review-container'}>
+                            <div className={'review-user'}>
+                                {`${users.find(user => user.id === review.userId).username}:`}
+                            </div>
+                            <div className={'review-content'}>
+                                {review.reviewContent}
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+                }
             </ul>
         </div>
     )

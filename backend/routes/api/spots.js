@@ -10,7 +10,8 @@ const { User, Spot, Booking, Review } = require('../../db/models');
 router.get('/', asyncHandler(async function (_req, res) {
     const spots = await Spot.findAll();
     const users = await User.findAll();
-    return res.json({ spots, users });
+    const reviews = await Review.findAll();
+    return res.json({ spots, users, reviews });
 }));
 
 router.get('/:id(\\d+)', async (req, res) => {

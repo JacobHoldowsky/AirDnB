@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_ONE_USER = 'spots/LOAD_ONE_USER'
 const LOAD_ONE_SPOT = 'spots/LOAD_ONE_SPOT';
+const LOAD_REVIEWS = 'spots/LOAD_REVIEWS'
 const ADD_ONE = 'spots/ADD_ONE'
 const GET_ONE = 'spots/GET_ONE'
 const REMOVE_ONE = 'spots/REMOVE_ONE'
@@ -17,6 +18,10 @@ const loadOneSpot = (list) => ({
     type: LOAD_ONE_SPOT,
     list
 });
+const loadReviews = (reviewList) => ({
+    type: LOAD_REVIEWS,
+    reviewList
+})
 
 const addOneSpot = (spot) => ({
     type: ADD_ONE,
@@ -41,10 +46,10 @@ const updateOneSpot = (spot) => ({
 export const getSpots = () => async dispatch => {
     const response = await fetch(`/api/spots`);
     if (response.ok) {
-        const spotsAndUsers = await response.json();
-        console.log(spotsAndUsers)
-        dispatch(loadOneSpot(spotsAndUsers.spots));
-        dispatch(loadOneUser(spotsAndUsers.users))
+        const spotsUsersAndReviews = await response.json();
+        dispatch(loadOneSpot(spotsUsersAndReviews.spots));
+        dispatch(loadOneUser(spotsUsersAndReviews.users))
+        dispatch(loadReviews(spotsUsersAndReviews.reviews))
     }
 };
 
@@ -103,8 +108,8 @@ const spotsReducer = (state = initialState, action) => {
     let newState
     switch (action.type) {
         case LOAD_ONE_USER:
-            const users = {}
-            action.userList.forEach(user => users[user.id] = user)
+            // const users = {}
+            // action.userList.forEach(user => users[user.id] = user)
             return {
                 ...state,
                 userList: action.userList
@@ -116,6 +121,13 @@ const spotsReducer = (state = initialState, action) => {
                 ...state,
                 ...spots,
                 list: action.list
+            }
+        case LOAD_REVIEWS:
+            // const reviews = {};
+            // action.reviewList.forEach(review => reviews[review.id] = review)
+            return {
+                ...state,
+                reviewList: action.reviewList
             }
         case ADD_ONE:
             return {

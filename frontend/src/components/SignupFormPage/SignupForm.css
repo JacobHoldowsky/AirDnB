@@ -19,3 +19,13 @@
     flex-direction: column;
     align-items: center;
 }
+
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+.error-container {
+    padding: 0px;
+    margin: 0px;
+}
