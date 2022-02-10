@@ -1,2 +1,18 @@
+.post-review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 200px;
+    border: black solid 1px;
+    padding: 30px;
+    /* margin-bottom: 25px; */
+    border-radius: 10px;
+    margin-top: 20px;
+}
 
-
+textarea {
+    resize: none;
+    height: 75px;
+    border-radius: 7px;
+}
