@@ -1,17 +1,38 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router";
+import { getSpots, postReview } from "../../store/spots";
 import './PostAReview.css'
 
 
-const PostAReview = () => {
+const PostAReview = ({ spot, setPostReview }) => {
     const dispatch = useDispatch();
-    const history = useHistory()
+    let spotId;
+    if (spot) {
+        spotId = spot.id;
+    }
+    // const history = useHistory()
     const sessionUserId = useSelector(state => state.session.user.id)
     const [review, setReview] = useState('')
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const payload = {
+            sessionUserId,
+            spotId,
+            reviewContent: review
+        }
+
+        await dispatch(postReview(payload))
+        await dispatch(getSpots())
+            .then(() => {
+                setPostReview(false)
+            })
+    }
+
     return (
-        <form className={'post-review-form'}>
+        <form onSubmit={handleSubmit} className={'post-review-form'}>
             Post your comment!
             <textarea
                 type="text"

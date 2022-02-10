@@ -58,4 +58,18 @@ router.post('/', restoreUser, asyncHandler(async function (req, res) {
     return res.json(spot)
 }))
 
+router.post('/:id/review', restoreUser, asyncHandler(async function (req, res) {
+    const spotId = req.params.id
+    const { reviewContent } = req.body;
+    console.log(req.body)
+    const userId = req.user.id;
+    const review = await Review.create({
+        userId,
+        spotId,
+        reviewContent
+    })
+    console.log(review)
+    return res.json({review});
+}))
+
 module.exports = router

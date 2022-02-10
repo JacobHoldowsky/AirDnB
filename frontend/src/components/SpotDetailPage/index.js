@@ -74,8 +74,8 @@ const SpotDetailPage = () => {
                 >
                     Add a review
                 </button>}
-                {postReview &&
-                <PostAReview />}
+            {postReview &&
+                <PostAReview spot={spot} setPostReview={setPostReview} />}
             {spotReviews &&
                 <ul className={'reviews-container'}>
                     {spotReviews && spotReviews.map(review => (
