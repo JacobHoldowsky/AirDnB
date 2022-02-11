@@ -21,12 +21,7 @@ const EditAndDelete = ({ spot }) => {
     return (
         <div className={'detail-edit-and-delete'}>
             <NavLink to={`/spots/${spotId}/edit`}>Edit</NavLink>
-            <button
-                onClick={async () => {
-                    await dispatch(deleteOneSpot(spotId))
-                    history.push('/spots')
-                }}
-            >Delete</button>
+            <NavLink to={`/spots/${spotId}/delete`}>Delete</NavLink>
         </div>
     )
 

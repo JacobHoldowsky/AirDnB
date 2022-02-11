@@ -14,6 +14,13 @@ router.get('/', asyncHandler(async function (_req, res) {
     return res.json({ spots, users, reviews });
 }));
 
+// router.get('/:id/delete', asyncHandler(async function (_req, res) {
+//     const spots = await Spot.findAll();
+//     const users = await User.findAll();
+//     const reviews = await Review.findAll();
+//     return res.json({ spots, users, reviews });
+// }));
+
 router.get('/:id(\\d+)', async (req, res) => {
     const spotId = req.params.id;
     const spot = await Spot.findByPk(spotId);
