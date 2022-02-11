@@ -48,7 +48,7 @@ function LoginFormPage() {
                     <label
                         className="username-or-email"
                     >
-                        Username or Email
+                        Username
                         <input
                             className='username-input'
                             type="text"
