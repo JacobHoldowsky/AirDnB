@@ -41,7 +41,7 @@ const SpotsListPage = () => {
                                 {spot.country}
                             </li>
                             <li>
-                                {`$${spot.price}`}
+                                {`$${spot.price} per night`}
                             </li>
                         </ul>
                     </div>

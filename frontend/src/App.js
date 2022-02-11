@@ -10,6 +10,7 @@ import CreateSpotForm from "./components/CreateSpotForm"
 import SpotDetailPage from "./components/SpotDetailPage";
 import EditSpotPage from "./components/EditSpotPage";
 import DeleteSpotPage from "./components/DeleteSpotPage";
+import HomePage from "./components/Home Page";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
-            Welcome!
+            <HomePage />
           </Route>
           <Route path="/login">
             <LoginFormPage />
