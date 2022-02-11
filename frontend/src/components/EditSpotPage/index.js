@@ -80,9 +80,10 @@ const EditSpotPage = () => {
                     >
                     </input>
                     <div className={'edit-form-buttons'}>
-                        <button 
-                        className={'edit-cancel-button'} 
-                        >
+                        <button className={'edit-cancel-button'}
+                            onClick={async () => {
+                                history.push(`/spots/${spotId}`)
+                            }}>
                             Cancel
                         </button>
                         <button className={'edit-submit-button'}>
