@@ -35,55 +35,64 @@ const EditSpotPage = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className={'edit-form'}>
-            <div className={'edit-form-container'}>
-                Edit your spot!
-                <input
-                    type="text"
-                    placeholder={spot.city}
-                    required
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                >
-                </input>
-                <input
-                    type="text"
-                    placeholder="State"
-                    required
-                    value={state}
-                    onChange={(e) => setState(e.target.value)}
-                >
-                </input>
-                <input
-                    type="text"
-                    placeholder="Country"
-                    required
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                >
-                </input>
-                <input
-                    type="text"
-                    placeholder="Price Per Night"
-                    required
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                >
-                </input>
-                <input
-                    type="text"
-                    placeholder="Image URL"
-                    required
-                    value={imgUrl}
-                    onChange={(e) => setImgUrl(e.target.value)}
-                >
-                </input>
-                <button>
-                    Submit
-                </button>
-            </div>
-
-        </form>
+        <div className={'a-form-container'}> 
+            <form onSubmit={handleSubmit} className={'edit-form'}>
+                <div className={'edit-form-container'}>
+                    Edit your spot!
+                    <input
+                        type="text"
+                        placeholder={spot.city}
+                        required
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                    >
+                    </input>
+                    <input
+                        type="text"
+                        placeholder="State"
+                        required
+                        value={state}
+                        onChange={(e) => setState(e.target.value)}
+                    >
+                    </input>
+                    <input
+                        type="text"
+                        placeholder="Country"
+                        required
+                        value={country}
+                        onChange={(e) => setCountry(e.target.value)}
+                    >
+                    </input>
+                    <input
+                        type="text"
+                        placeholder="Price Per Night"
+                        required
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)}
+                    >
+                    </input>
+                    <input
+                        type="text"
+                        placeholder="Image URL"
+                        required
+                        value={imgUrl}
+                        onChange={(e) => setImgUrl(e.target.value)}
+                    >
+                    </input>
+                    <div className={'edit-form-buttons'}>
+                        <button 
+                        className={'edit-cancel-button'} 
+                        >
+                            Cancel
+                        </button>
+                        <button className={'edit-submit-button'}>
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
     )
 
 }

@@ -25,10 +25,10 @@ function Navigation({ isLoaded }) {
   return (
     <nav className='profile-details'>
       <div className={'nav-bar-links'}>
-        <NavLink exact to="/">Home</NavLink>
-        <NavLink to="/spots">Check out the newest spots!</NavLink>
+        <NavLink className={'navlink'} exact to="/">Home</NavLink>
+        <NavLink className={'navlink'} to="/spots">Check out the newest spots!</NavLink>
         {sessionUser && 
-        <NavLink to='/spots/new'>Post a new Spot</NavLink>}
+        <NavLink className={'navlink'} to='/spots/new'>Post a new Spot</NavLink>}
       </div>
         {isLoaded && sessionLinks}
     </nav>

@@ -1,15 +1,62 @@
-.welcome-blurb {
+.body {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    text-shadow: rgb(253, 71, 71) 1px 1px 2px ;
-}
-
-.where-will-you-go-next {
-    display: flex;
-    justify-content: center;
-    text-shadow: orange 1px 1px 5px;
+    height: 100vh;
+    width: 100%;
+    background: #2980B9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* margin: 0px; */
 }
 
 .home-page-container {
-    /* background-image: linear-gradient(to right,#ff6e7f,#bfe9ff) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: slateblue;
+    width: 500px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.welcome-blurb {
+    text-shadow: rgb(253, 71, 71) 1px 1px 2px ;
+    margin-bottom: 0;
+}
+
+.where-will-you-go-next {
+    text-shadow: orange 1px 1px 5px;
+    margin-top: 10px;
+}
+
+.home-page-posts-link {
+    display: flex;
+    justify-content: center;
+}
+
+.home-navlink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border: 2px black solid;
+    border-radius: 7px;
+    margin-top: 0px;
+    padding: 5px;
+    color: skyblue;
+    text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;
+    font-family: sans; color: yellow;
+    background-color: slateblue;
+    height: 50px;
+    width: 100px;
+    padding-right: 0;
+}
+
+.home-navlink:visited {
+    text-decoration: none;
+}
+
+.home-navlink:hover {
+    background-color: darkslateblue;
 }
