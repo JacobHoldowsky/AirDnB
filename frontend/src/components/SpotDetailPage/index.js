@@ -61,9 +61,6 @@ const SpotDetailPage = () => {
                 <li>
                     {`$${spot?.price} per night`}
                 </li>
-                <li>
-                    {spot?.country}
-                </li>
                 {user && <li>
                     {`Posted by ${user?.username}`}
                 </li>}
