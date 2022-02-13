@@ -3,26 +3,27 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
 }
 
 .home-page-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: transparent;
+    background-color: gold;
+    opacity: .8;
     width: 350px;
     height: 200px;
-    border-radius: 10px;
+    border-radius: 20px;
+    border: solid black 2px ;
 }
 
 .welcome-blurb {
-    text-shadow: gold 1px 1px 2px ;
+    text-shadow: skyblue 1px 1px 2px ;
     margin-bottom: 0;
 }
 
 .where-will-you-go-next {
-    text-shadow: gold 1px 1px 5px;
+    text-shadow: skyblue 1px 1px 1px;
     margin-top: 10px;
 }
 
@@ -54,4 +55,9 @@
 
 .home-navlink:hover {
     background-color: goldenrod;
+}
+
+.home-img {
+    position: fixed;
+    z-index: -1;
 }
