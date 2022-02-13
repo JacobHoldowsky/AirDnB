@@ -12,8 +12,6 @@ const SpotDetailPage = () => {
     const spot = useSelector(state => state.spots[spotId])
     const users = useSelector(state => state.spots.userList)
     const allReviews = useSelector(state => state.spots.reviewList)
-    console.log('spotId', spotId)
-    console.log('allReviews', allReviews)
     const [postReview, setPostReview] = useState(false)
     
     const sessionUserId = useSelector(state => {
@@ -29,7 +27,6 @@ const SpotDetailPage = () => {
     let spotReviews;
     if (allReviews) {
         spotReviews = allReviews.filter(review => review?.spotId === spot.id)
-        console.log('spotReviews', spotReviews)
     }
 
     const authorizedReviewer = sessionUserId !== spot?.userid

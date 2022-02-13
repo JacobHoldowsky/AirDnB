@@ -78,7 +78,6 @@ export const editOneSpot = (spotId, payload) => async dispatch => {
     })
     if (response.ok) {
         const updatedSpot = await response.json();
-        console.log(updatedSpot)
         dispatch(updateOneSpot(updatedSpot));
         return updatedSpot
     }
@@ -114,10 +113,8 @@ export const postReview = (review) => async dispatch => {
 
 export const getSpotDetails = (id) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${id}`)
-    console.log('hi', response)
     if (response.ok) {
         const spotAndUser = await response.json();
-        console.log('hi',spotAndUser)
         dispatch(getOneSpot(spotAndUser.spot))
     }
 }
