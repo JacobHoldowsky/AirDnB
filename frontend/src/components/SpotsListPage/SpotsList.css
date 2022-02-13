@@ -8,6 +8,7 @@
     width: 500px;
     margin: 10px;
     border-radius: 10px;
+    /* border: black 1px solid */
 }
 
 .spots-list-spot-details {
@@ -16,13 +17,12 @@
     list-style-type: none;
     margin-bottom: 55px;
     padding: 0px;
+    width: auto;
+    padding: 10px;
+    border-radius: 15px;
 }
 
-/* .spots-links {
-    border: none;   
-    background-color: white;
+.spot-details-container {
+    display: flex;
+    justify-content: center;
 }
-
-.spots-links:hover {
-    background-color: white;
-} */

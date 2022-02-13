@@ -5,13 +5,12 @@
 }
 
 .edit-form-container {
-    border: solid black 1px;
+    border: solid black 2px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     padding: 15px;
-    /* width: 200px; */
     border-radius: 5px;
 }
 

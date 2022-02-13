@@ -30,20 +30,17 @@ const SpotsListPage = () => {
                         <Link className={'spots-links'} key={spot.id} to={`spots/${spot.id}`}>
                             <img className={'spots-list-img'} onClick={Redirect} src={spot.imgUrl} alt={spot.type} />
                         </Link>
-                        <ul className={'spots-list-spot-details'}>
-                            <li>
-                                {`${spot.city},`}
-                            </li>
-                            <li>
-                                {`${spot.state},`}
-                            </li>
-                            <li>
-                                {spot.country}
-                            </li>
-                            <li>
-                                {`$${spot.price} per night`}
-                            </li>
-                        </ul>
+                        <div className={'spot-details-container'}>
+                            <ul className={'spots-list-spot-details'}>
+                                <li>
+                                    {`${spot.city}, ${spot.state}, ${spot.country}`}
+                                </li>
+                                <li>
+                                    {`$${spot.price} per night`}
+                                </li>
+                            </ul>
+                        </div>
+                        
                     </div>
                     
                     
