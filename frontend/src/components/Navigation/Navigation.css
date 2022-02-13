@@ -11,7 +11,7 @@
     padding: 10px;
     gap: 10px;
     list-style-type: none;
-    background-color: silver;
+    background-color: skyblue;
     position: absolute;
     top: 24px;
 }
@@ -45,9 +45,9 @@
 .navlink {
     text-decoration: none;
     border: black solid 1px;
-    padding: 2.5px;
+    padding: 2px;
     border-radius: 5px;
-    background-color: lightcyan;
+    background-color: gold;
     color: black;
 }
 
@@ -56,5 +56,25 @@
 }
 
 .navlink:hover {
-    background-color: cyan
+    background-color: goldenrod
+}
+
+.user-profile-btn {
+    border: black 1px solid;
+    border-radius: 10px;
+    background-color: gold;
+}
+
+.user-profile-btn:hover {
+    background-color: goldenrod;
+}
+
+.dropdown-logout-button {
+    border: black 1px solid;
+    border-radius: 10px;
+    background-color: gold;
+}
+
+.dropdown-logout-button:hover {
+    background-color: goldenrod;
 }

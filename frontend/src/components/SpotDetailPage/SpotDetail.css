@@ -26,7 +26,6 @@
     margin-top: 35px;
     color: black;
     border-bottom: black solid 2px;
-    /* font-size: x-large; */
     margin-bottom: 20px;
 }
 
@@ -35,7 +34,8 @@
     justify-content: flex-start;
     list-style-type: none;
     border-radius: 5px;
-    gap: 20px
+    gap: 20px;
+    width: 100%;
 }
 
 .review-container {
@@ -54,5 +54,15 @@
 .review-content {
     font-style: italic;
     font-size: larger;
+}
+
+.add-a-review-btn {
+    border: black 1px solid;
+    border-radius: 10px;
+    background-color: gold;
+}
+
+.add-a-review-btn:hover {
+    background-color: goldenrod;
 }
 

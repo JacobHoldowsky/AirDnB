@@ -42,7 +42,8 @@ const PostAReview = ({ spot, setPostReview }) => {
                 onChange={(e) => setReview(e.target.value)}
             >
             </textarea>
-            <button>
+            <button
+            className={'submit-comment-btn'}>
                 Submit
             </button>
         </form>

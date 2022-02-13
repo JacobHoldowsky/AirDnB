@@ -15,3 +15,22 @@ form {
     justify-content: center;
     align-items: center;
 }
+
+button {
+    border: black 1px solid;
+    border-radius: 10px;
+    background-color: gold;
+}
+
+button:hover {
+    background-color: goldenrod;
+}
+
+input {
+    border-radius: 6px;
+}
+
+a {
+
+}
+

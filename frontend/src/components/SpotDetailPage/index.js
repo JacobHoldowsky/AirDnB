@@ -71,6 +71,7 @@ const SpotDetailPage = () => {
             {sessionUserId && sessionUserId !== user?.id &&
                 <button
                     onClick={() => setPostReview(!postReview)}
+                    className={'add-a-review-btn'}
                 >
                     Add a review
                 </button>}

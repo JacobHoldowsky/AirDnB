@@ -20,8 +20,12 @@ const EditAndDelete = ({ spot }) => {
 
     return (
         <div className={'detail-edit-and-delete'}>
-            <NavLink to={`/spots/${spotId}/edit`}>Edit</NavLink>
-            <NavLink to={`/spots/${spotId}/delete`}>Delete</NavLink>
+            <NavLink 
+                className={'edit-delete-btns'}
+            to={`/spots/${spotId}/edit`}>Edit</NavLink>
+            <NavLink 
+                className={'edit-delete-btns'}
+            to={`/spots/${spotId}/delete`}>Delete</NavLink>
         </div>
     )
 
