@@ -16,7 +16,7 @@
 .login-form{
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 .username-or-email {
@@ -40,4 +40,17 @@
 .login-error-container {
     padding: 0px;
     margin: 0px;
+}
+
+.a-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.login-error-container {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
 }

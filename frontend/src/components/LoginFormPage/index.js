@@ -38,10 +38,11 @@ function LoginFormPage() {
 
     return (
         <div className={'a-form-container'}>
+            <ul className={'login-error-container'}>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
             <form onSubmit={handleSubmit} className={'login-form'}>
-                <ul className={'login-error-container'}>
-                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul>
+                
                 <div
                     className="login-container"
                 >

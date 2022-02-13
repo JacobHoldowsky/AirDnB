@@ -20,12 +20,16 @@
     align-items: center;
 }
 
-.form {
+.a-form-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    gap: 20px;
+    
 }
 
 .error-container {
     padding: 0px;
     margin: 0px;
+    list-style: none;
 }
